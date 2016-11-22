@@ -33,7 +33,7 @@ namespace ProjektKCK
 
         private void Sign_in_Click(object sender, RoutedEventArgs e)
         {
-            Sign_in sign_in = new Sign_in();
+            Sign_in sign_in = new Sign_in(us);
             sign_in.Show();
             this.Close(); 
         }

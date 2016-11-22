@@ -70,7 +70,7 @@ namespace ProjektKCK
 
         public void zapisywaniePlikuProfile(List<User> profileList)
         {
-            using (StreamWriter openFile = new StreamWriter("Profile.txt", true))
+            using (StreamWriter openFile = new StreamWriter("Profile.txt"))
             {
                 if (profileList.Count > 0)
                 {

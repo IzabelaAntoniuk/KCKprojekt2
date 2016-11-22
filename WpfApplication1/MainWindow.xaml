@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="700">
+        Title="MainWindow" Height="450" Width="700" MinWidth="700" MinHeight="450">
     <Grid Background="CornflowerBlue">
         
         <Grid.RowDefinitions>
@@ -21,9 +21,9 @@
 
         <Grid Grid.Row="1">
             <StackPanel>
-                <Button Click="Sign_in_Click" Content="Zaloguj się" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3"/>
-                <Button Click="Sign_up_Click" Content="Zarejestruj się" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3"/>
-                <Button Click="Exit_Click" Content="Wyjdź" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3"/>
+                <Button Click="Sign_in_Click" Content="Zaloguj się" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3"/>
+                <Button Click="Sign_up_Click" Content="Zarejestruj się" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3"/>
+                <Button Click="Exit_Click" Content="Wyjdź" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3"/>
             </StackPanel>
         </Grid>
         

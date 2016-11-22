@@ -29,16 +29,59 @@ namespace ProjektKCK
             InitializeComponent();
             us = use;
         }
+        public void zapiszListe()
+        {
+            file.zapisywaniePlikuProfile(profileList);
+        }
 
         private void Sign_up_Click(object sender, RoutedEventArgs e)
         {
-            Kalkulator kal = new Kalkulator();
-            kal.mojeBMI(us);
-            kal.zapotrzebowanieKCAL(us);
-            profileList.Add(us);
-            //File load = new File();
-            //file.zapisywaniePlikuProfile(profileList);
-            file.zapisywaniePliku(profileList);
+
+
+            us.waga = weight.Text;
+            us.wzrost = height.Text;
+            us.plec = gender.Text;
+            us.aktywnosc = active.Text;
+            us.kg = kg.Text;
+
+            if (us.waga.Length <= 0 || float.Parse(us.waga) <= 0)
+            {
+                MessageBox.Show("Wprowadz wage.");
+            }
+
+            else if (us.wzrost.Length <= 0 || float.Parse(us.wzrost) <= 0)
+            {
+                MessageBox.Show("Wprowadz wzrost.");
+            }
+
+            else if (us.plec.Length <= 0)
+            {
+                MessageBox.Show("Wprowadz plec.");
+            }
+
+            else if (us.aktywnosc.Length <= 0)
+            {
+                MessageBox.Show("Wprowadz aktywnosc.");
+            }
+            else if (us.kg.Length <= 0)
+            {
+                MessageBox.Show("Wprowadz kg.");
+            }
+            else
+            {
+                MessageBox.Show("Utworzono nowy profil");
+                Kalkulator kal = new Kalkulator();
+                kal.mojeBMI(us);
+                kal.zapotrzebowanieKCAL(us);
+                profileList.Add(us);
+                file.zapisywaniePlikuProfile(profileList);
+
+                MainWindow mainW = new MainWindow();
+                mainW.Show();
+                var myWindow = Window.GetWindow(this);
+                myWindow.Close();
+            }
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

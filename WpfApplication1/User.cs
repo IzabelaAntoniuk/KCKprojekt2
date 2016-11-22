@@ -20,6 +20,7 @@ namespace ProjektKCK
         public string dataUr { get; set; }
         public int rok { get; set; }
         public int miesiac { get; set; }
+        public int dzień { get; set; }
         public string waga { get; set; }
         public string wzrost { get; set; }
         public string aktywnosc { get; set; }
@@ -33,7 +34,9 @@ namespace ProjektKCK
         File file = new File();
         public int dziennie { get; set; }
         public int zuzyte { get; set; }
-        List<User> profileList = new List<User>();
+        public List<User> profileList = new List<User>();
+        public List<Food> productList = new List<Food>();
+        public List<Workout> workoutList = new List<Workout>();
 
         public User()
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Sign_in" Height="450" Width="700">
+        Title="Sign_in" Height="450" Width="700" MinWidth="700" MinHeight="450">
     <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,34 +27,18 @@
 
             <StackPanel>
                 <Label Content="Login" Grid.Column="0"/>
-                <TextBox Height="20" Width="150" Grid.Column="1" Margin="5"/>
+                <TextBox x:Name="login" Height="20" Width="150" Grid.Column="1" Margin="5"/>
                 <Label Content="Hasło" Grid.Column="0"/>
-                <TextBox Height="20" Width="150" Grid.Column="1" Margin="5"/>
+                <PasswordBox x:Name="password" Height="20" Width="150" Grid.Column="1" Margin="5"/>
+                
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="20">
             <StackPanel Orientation="Horizontal">
-                <Button Click="Sign_in_Click" Content="Zaloguj" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3" Grid.Column="0"/>
-                <Button Click="Cancel_Click" Content="Anuluj" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3" Grid.Column="1"/>
+                <Button Click="Sign_in_Click" Content="Zaloguj" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="0"/>
+                <Button Click="Cancel_Click" Content="Anuluj" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="1"/>
             </StackPanel>
         </Grid>
-
-        <StackPanel>
-            <ToggleButton Name="button">
-                <ToggleButton.Template>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <TextBlock>Click Me Here!!</TextBlock>
-                    </ControlTemplate>
-                </ToggleButton.Template>
-            </ToggleButton>
-            <Popup IsOpen="{Binding IsChecked, ElementName=button}" StaysOpen="False">
-                <Border Background="LightYellow">
-                    <TextBlock>I'm the popup</TextBlock>
-                </Border>
-            </Popup>
-        </StackPanel>
-
-
     </Grid>
 </Window>

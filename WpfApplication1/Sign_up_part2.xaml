@@ -22,19 +22,19 @@
             <StackPanel>
                 <Label Grid.Column="0"/>
                 <Label Content="Wzrost" Grid.Column="0"/>
-                <TextBox Height="20" Width="150" Grid.Column="1"/>
+                <TextBox x:Name="height" Height="20" Width="150" Grid.Column="1"/>
                 <Label Content="Waga" Grid.Column="0"/>
-                <TextBox Height="20" Width="150" Grid.Column="1"/>
+                <TextBox x:Name="weight" Height="20" Width="150" Grid.Column="1"/>
 
                 <Label Content="Płeć" Grid.Column="0"/>
-                <ComboBox Height="20" Width="150" Grid.Column="1">
+                <ComboBox x:Name="gender" Height="20" Grid.Column="1">
                     <ComboBoxItem IsSelected="True"></ComboBoxItem>
                     <ComboBoxItem>Kobieta</ComboBoxItem>
                     <ComboBoxItem>Mężczyzna</ComboBoxItem>
                 </ComboBox>
 
                 <Label Content="Aktywność fizyczna" Grid.Column="0"/>
-                <ComboBox Height="20" Width="150" Grid.Column="1">
+                <ComboBox x:Name="active" Height="20" Width="150" Grid.Column="1">
                     <ComboBoxItem IsSelected="True"></ComboBoxItem>
                     <ComboBoxItem>Znikoma</ComboBoxItem>
                     <ComboBoxItem>Bardzo mała</ComboBoxItem>
@@ -51,16 +51,16 @@
                 </StackPanel>
 
                 <Label Content="Ile(kg):" Grid.Column="0"/>
-                <TextBox Text="0" Height="20" Width="150" Grid.Column="1"/>
+                <TextBox x:Name="kg" Height="20" Width="150" Grid.Column="1"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="20">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Zarejestruj" Click="Sign_up_Click" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3"/>
-                <Button Content="Anuluj" Click="Cancel_Click" Height="30" Width="100" Margin="8" Background="PaleTurquoise" BorderBrush="White" BorderThickness="3"/>
+                <Button Content="Zarejestruj" Click="Sign_up_Click" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3"/>
+                <Button Content="Anuluj" Click="Cancel_Click" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3"/>
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </UserControl>

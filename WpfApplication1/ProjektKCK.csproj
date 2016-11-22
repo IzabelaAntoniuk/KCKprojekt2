@@ -74,6 +74,7 @@
     <Compile Include="Sign_up.xaml.cs">
       <DependentUpon>Sign_up.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Workout.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Sign_up_part1.xaml.cs">
       <DependentUpon>Sign_up_part1.xaml</DependentUpon>

@@ -5,18 +5,399 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Profile" Height="450" Width="700">
+        Title="Profile" Height="450" Width="700" MinWidth="700" MinHeight="450">
     <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" HorizontalAlignment="Right">
-            <Border BorderBrush="White" BorderThickness="3" Height="75" Width="100" Margin="15">
-                <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual" Source="E:\Iza\Studia\Semestr V\KCK\Projekt1\apple3.GIF" LoadedBehavior="Play" Stretch="None"/>
-            </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Border BorderBrush="White" BorderThickness="3" Height="75" Width="100" Margin="15">
+                    <MediaElement x:Name="myGif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual" Source="E:\Iza\Studia\Semestr V\KCK\Projekt1\apple3.GIF" LoadedBehavior="Play" Stretch="None"/>
+                </Border>
+            </Grid>
+
+
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="30" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Zalogowany jako:" />
+                        <Label x:Name="nickname" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Grid>
+                        <ProgressBar Minimum="0" Grid.Column="0" Width="200" Height="30" Name="pbStatus" Foreground="Tomato"/>
+                        <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:####}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Sign_out_Click" Content="Wyloguj" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="0"/>
+                    <Button Click="Cancel_Click" Content="Zakończ" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="1"/>
+                </StackPanel>
+            </Grid>
+
         </Grid>
-        
+
+        <Grid Grid.Row="1">
+            <TabControl Background="SteelBlue" Margin="3">
+                <TabItem Header="Dodaj" Background="Thistle" >
+                    <TabControl Background="SteelBlue" Margin="3">
+                        <TabItem Header="Dodaj posiłek" Background="Thistle">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <Label Content="Nazwa produktu" />
+                                    <TextBox x:Name="productName" Height="20" Width="150"/>
+                                    <Label Content="Waga"/>
+                                    <TextBox x:Name="productWeight" Height="20" Width="150"/>
+
+                                    <Label Content="Kcal" Grid.Column="0"/>
+                                    <TextBox x:Name="productKcal" Height="20" Width="150"/>
+                                    <Label Content="Data spożycia"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="day" Text="dd" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                        <Label Content="-"/>
+                                        <TextBox x:Name="month" Text="mm" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                        <Label Content="-"/>
+                                        <TextBox x:Name="year" Text="yyyy" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                    </StackPanel>
+                                    <Button Click="Add_food_Click" Content="Dodaj" Height="25" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" />
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Dodaj trening" Background="Thistle">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <Label Content="Nazwa treningu" />
+                                    <TextBox x:Name="trainingName" Height="20" Width="150"/>
+                                    <Label Content="Czas"/>
+                                    <TextBox x:Name="trainingWeight" Height="20" Width="150"/>
+
+                                    <Label Content="Kcal" Grid.Column="0"/>
+                                    <TextBox x:Name="trainingKcal" Height="20" Width="150"/>
+                                    <Label Content="Data wykonania"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="dayW" Text="dd" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                        <Label Content="-"/>
+                                        <TextBox x:Name="monthW" Text="mm" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                        <Label Content="-"/>
+                                        <TextBox x:Name="yearW" Text="yyyy" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                    </StackPanel>
+                                    <Button Click="Add_training_Click" Content="Dodaj" Height="25" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" />
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Dodaj wagę" Background="Thistle">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <Label Content="Edytuj wagę"/>
+                                    <TextBox x:Name="newWeight" Height="20" Width="150" Margin="10"/>
+                                    <Button Click="Update_weight_Click" Content="Zaktualizuj" Height="25" Width="100" Margin="10" Background="Thistle" BorderBrush="White" BorderThickness="3" />
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+                <TabItem Header="Obejrzyj" Background="Thistle">
+                    <TabControl Background="SteelBlue" Margin="3">
+                        <TabItem Header="Obejrzyj posiłki" Background="Thistle">
+                            <Grid HorizontalAlignment="Center" Width="400">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Background="LightSteelBlue">
+                                    <ListBox Name="lbTodoList" HorizontalContentAlignment="Stretch" Width="500" Background="LightSteelBlue">
+                                        <ListBox.Template>
+                                            <ControlTemplate>
+                                                <DockPanel LastChildFill="True">
+                                                    <Grid DockPanel.Dock="Top" Height="30" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="0" FontWeight="Bold">Nazwa produktu</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="1" FontWeight="Bold">Waga[g]</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="2" FontWeight="Bold">Kcal</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="3" FontWeight="Bold">Data spożycia</Label>
+                                                    </Grid>
+                                                    <ItemsPresenter></ItemsPresenter>
+                                                </DockPanel>
+                                            </ControlTemplate>
+                                        </ListBox.Template>
+
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,2" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding foodName}" Grid.Column="0"/>
+                                                    <TextBlock Text="{Binding foodWeight}" Grid.Column="1"/>
+                                                    <TextBlock Text="{Binding foodKcal}" Grid.Column="2"/>
+                                                    <TextBlock Text="{Binding foodDate}" Grid.Column="3"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="Obejrzyj treningi" Background="Thistle">
+                            <Grid HorizontalAlignment="Center" Width="400">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Background="LightSteelBlue">
+                                    <ListBox Name="lbTodoList2" HorizontalContentAlignment="Stretch" Width="500" Background="LightSteelBlue">
+                                        <ListBox.Template>
+                                            <ControlTemplate>
+                                                <DockPanel LastChildFill="True">
+                                                    <Grid DockPanel.Dock="Top" Height="30" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="0" FontWeight="Bold">Nazwa treningu</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="1" FontWeight="Bold">Czas[min]</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="2" FontWeight="Bold">Kcal</Label>
+                                                        <Label BorderThickness="1" BorderBrush="DimGray" Grid.Column="3" FontWeight="Bold">Data wykonania</Label>
+                                                    </Grid>
+                                                    <ItemsPresenter></ItemsPresenter>
+                                                </DockPanel>
+                                            </ControlTemplate>
+                                        </ListBox.Template>
+
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,2" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding nameWorkout}" Grid.Column="0"/>
+                                                    <TextBlock Text="{Binding timeWorkout}" Grid.Column="1"/>
+                                                    <TextBlock Text="{Binding kcalWorkout}" Grid.Column="2"/>
+                                                    <TextBlock Text="{Binding dateWorkout}" Grid.Column="3"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+                <TabItem Header="Kalkulatory" Background="Thistle">
+                    <TabControl Background="SteelBlue" Margin="3">
+                        <TabItem Header="BMI" Background="Thistle">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Twoje BMI wynosi:" FontWeight="Bold"/>
+                                    <Label x:Name="bmi" />
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Zapotrzebowanie kaloryczne" Background="Thistle">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Twoje zapotrzebowanie kaloryczne wynosi:" FontWeight="Bold"/>
+                                    <Label x:Name="cpm" />
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+                <TabItem Header="Zobacz swój profil" Background="Thistle">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Imię:" FontWeight="Bold"/>
+                            <Label x:Name="name" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nazwisko:" FontWeight="Bold"/>
+                            <Label x:Name="surname" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Wiek:" FontWeight="Bold"/>
+                            <Label x:Name="age"  />
+                            <Label Content="lat" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Waga:" FontWeight="Bold"/>
+                            <Label x:Name="weight" />
+                            <Label Content="kg" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Wzrost:" FontWeight="Bold"/>
+                            <Label x:Name="height" />
+                            <Label Content="cm" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Aktywność:" FontWeight="Bold"/>
+                            <Label x:Name="active" />
+                        </StackPanel>
+                        <Grid>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="Ustawienia" Background="Thistle">
+                    <TabControl Background="SteelBlue" Margin="0,2,6,4">
+                        <TabItem Header="Edytuj profil" Background="Thistle">
+
+                            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                                <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid Grid.Column="0" Margin="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Grid.Column="0"/>
+                                                    <Label Content="Imię" Grid.Column="0"/>
+                                                    <TextBox x:Name="i" Height="20" Width="150" Grid.Column="1"/>
+                                                    <Label Content="Nazwisko" Grid.Column="0"/>
+                                                    <TextBox x:Name="n" Height="20" Width="150" Grid.Column="1"/>
+                                                    <Label Content="Data urodzenia"/>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBox x:Name="dd" Text="dd" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                                        <Label Content="-"/>
+                                                        <TextBox x:Name="mm" Text="mm" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                                        <Label Content="-"/>
+                                                        <TextBox x:Name="yyyy" Text="yyyy" TextAlignment="Center" GotFocus="TextBox_GotFocus" Height="20" Width="40"/>
+                                                    </StackPanel>
+                                                    <Label Content="Wzrost" Grid.Column="0"/>
+                                                    <TextBox x:Name="w" Height="20" Width="150" Grid.Column="1"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0" Margin="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <Label Grid.Column="1"/>
+
+                                                        <Label Content="Aktywność fizyczna" Grid.Column="0"/>
+                                                        <ComboBox x:Name="a" Height="20" Width="150" Grid.Column="1">
+                                                            <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                                                            <ComboBoxItem>Znikoma</ComboBoxItem>
+                                                            <ComboBoxItem>Bardzo mała</ComboBoxItem>
+                                                            <ComboBoxItem>Umiarkowana</ComboBoxItem>
+                                                            <ComboBoxItem>Duża</ComboBoxItem>
+                                                            <ComboBoxItem>Bardzo duża</ComboBoxItem>
+                                                        </ComboBox>
+
+                                                        <StackPanel Margin="10">
+                                                            <Label>Chcę:</Label>
+                                                            <RadioButton IsChecked="True">Utrzymać wagę</RadioButton>
+                                                            <RadioButton>Schudnąć</RadioButton>
+                                                            <RadioButton>Przytyć</RadioButton>
+                                                        </StackPanel>
+
+                                                        <Label Content="Ile(kg):" Grid.Column="0" Height="33"/>
+                                                        <TextBox x:Name="kg" Height="20" Width="150" Grid.Column="1" RenderTransformOrigin="0.491,0.45"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                                            <Button Click="Save_Click" Content="Zapisz" Height="30" Width="100" Margin="8" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Edytuj login i hasło" Background="Thistle">
+                            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                                <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid Grid.Column="0" Margin="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Grid.Column="0"/>
+                                                    <Label Content="Login" Grid.Column="0"/>
+                                                    <TextBox x:Name="log" Height="20" Width="150" Grid.Column="1"/>
+                                                    <Label Content="Hasło" Grid.Column="0"/>
+                                                    <TextBox x:Name="pas" Height="20" Width="150" Grid.Column="1"/>
+                                                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                                                        <Button Click="Update_logpas_Click" Content="Zapisz" Height="30" Width="100" Margin="15" Background="Thistle" BorderBrush="White" BorderThickness="3" Grid.Column="0"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>
